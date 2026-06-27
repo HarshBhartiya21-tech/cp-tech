@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header style="background-color:beige;height:120px;">
+        <img src="Screenshot 2026-06-27 234419.png" alt="highcourt" style="height:90px;width:100%;">
+        <div style="display:flex;background-color:beige;height:10px;">
+            <a href="https://ecommitteesci.gov.in/" style="background-color:white;margin-left:200px;color:black;">Home | Gatepass</a>
+           
+        </div>
+    </header>
+    <div style="width:100%;  text-align:center;">
+        <h4 style="background-color:rgb(81, 80, 80);color:white;font-size:25px;height:35px;">Primary visitor details</h4>
+    </div><form id="visitorform">
+            <div style="display:flex;color:rgba(123, 123, 123, 0.71);font-size:x-large">
+        <div style="width:50%;margin-left:25px;">
+        
+        <label for="name">Name:<span style=color:red>*</span></label>
+        <input type="text" required id="name" style="margin-left:150px;width:300px;"><br><br>
+        <label for="email">Email:<span style=color:red>*</span></label>
+        <input type="email" required id="email"style="margin-left: 150px;width:300px;"><br><br>
+        <label for="father">Father/Spouse Name:<span style=color:red>*</span></label>
+        <input type="text" required id="father"style="margin-left :5px;width:300px;"><br><br>
+        <label for="address">Address:<span style=color:red>*</span></label>
+        <input type="text" required id="address"style="margin-left :125px;height:40px;width:300px;"><br><br>
+        <label for="occupation">Occupation:<span style=color:red>*</span></label>
+        <select id="occupation" required style="margin-left:95px;width:300px;">
+            <option>select</option>
+            <option value="Student">Student</option>
+            <option value="Employee">Employee</option>
+            <option value="Homemaker">Home Maker</option>
+        </select><br><br>
+        <label for="idNumber">Identity Proof:<span style=color:red>*</span></label>
+        <select id="idnumber" required style="margin-left:70px;width:300px">
+            <option>Select</option>
+            <option value="Adharcard">Adhar Card</option>
+            <option value="Passport">Passport</option>
+            <option value="Pancard">Pan Card</option>
+            <option value="Stuid">Student ID card</option>
+        </select><br><br>
+        <label for="purpose">Purpose of Visit:<span style=color:red>*</span></label>
+        <input type="text" required id="purpose"style="margin-left:50px;width:300px;"><br><br>
+            <label for="branch">Branch Name:</label>
+            <input type="text" id="branch"style="margin-left:80px;width:300px;"><br><br>
+        </div>
+        <div style="width:50%;margin-left:50px;">
+        <label for="visitDate">Visit Date:<span style=color:red>*</span></label>
+        <input type="date" required id="visitDate" style="margin-left:70px;width:300px;"><br><br>
+        <label for="gender">Gender:<span style=color:red>*</span></label>
+        <select id="gender" required style="margin-left:95px;width:300px;">
+            <option value="select">Select</option>
+            <option value="male">Male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+        </select><br><br>
+        <label for="age">Age:<span style=color:red>*</span></label>
+        <input type="number" required id="age" style="margin-left:127px;width:300px"><br><br>
+        <label for="mobile">Mobile No:<span style=color:red>*</span></label>
+        <input type="tel" pattern="[0-9]{10}" required id="mobile" placeholder="10 digit number" style="margin-left:65px;width:300px;"><br><br>
+        <label for="validupto">Valid Upto:<span style=color:red>*</span></label>
+        <input type="date" required id="validupto" style="width:300px;margin-left:65px;"><br><br>
+        <label for="requestWith">Request With:<span style=color:red>*</span></label>
+        <select id="requestwith" required style="width:300px;margin-left:41px;">
+            <option>select</option>
+            <option value="Judge">Judge</option>
+            <option value="Advocate">Advocate</option>
+            <option value="registrar">Registrar</option>
+            <option value="sectionofice">Section Officer</option>
+        </select><br><br>
+        <label for="remark">Remark:</label>
+        <input type="text" id="remark" style="height:40px;width:300px;margin-left:110px;"><br><br>
+        <label for="upload">Upload Document:<span style=color:red>*</span></label>
+        <input type="file" required id="upload"><br><br>
+        <button type="button" onclick="savedata()" style="height:40px;width:100px;"><b style="font-size:15px">Save</b></button>
+        </div>
+        
+    </div>
+    </form>
+    <script>
+        function savedata(){
+        let form=document.getElementById("visitorform");
+
+if(!form.checkValidity()){
+
+alert("Please fill all required fields correctly");
+
+form.reportValidity();
+
+return;
+}
+        
+            let visitorData={
+                name:document.getElementById("name").value,
+                email:document.getElementById("email").value,
+                father:document.getElementById("father").value,
+                address:document.getElementById("address").value,
+                occupation:document.getElementById("occupation").value,
+                idnumber:document.getElementById("idnumber").value,
+                purpose:document.getElementById("purpose").value,
+                visitDate:document.getElementById("visitDate").value,
+                gender:document.getElementById("gender").value,
+                age:document.getElementById("age").value,
+                mobile:document.getElementById("mobile").value,
+                validupto:document.getElementById("validupto").value,
+                requestwith:document.getElementById("requestwith").value,
+                upload:document.getElementById("upload").value,
+                branch:document.getElementById("branch").value,
+                remark:document.getElementById("remark").value
+            };
+            localStorage.setItem(
+                "visitorinfo",
+                JSON.stringify(visitorData)
+            );
+            alert("Details saved successfully in local server");
+        }
+    </script>
+</body>
+</html>
